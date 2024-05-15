@@ -10,6 +10,8 @@ In this course, you will learn the basics of using a large language model (speci
 
 Each numbered notebook corresponds with one 90-minute class session. Sessions presume that participants are already familiar with Python and Jupyter Notebooks.
 
+The subsections below outline the content of each class:
+
 ## Day 1
 
 ### Why bother with text classification?
@@ -62,7 +64,7 @@ Each numbered notebook corresponds with one 90-minute class session. Sessions pr
 
 ## Day 2
 
-### Review
+### Review Day 1
 
 - Why classify texts?
 - Good and bad of using LLMs for classification
@@ -94,7 +96,8 @@ Each numbered notebook corresponds with one 90-minute class session. Sessions pr
   - Load results as they come in, merge, and check for inter-annotator agreement
   - Look at high agreement questions and confidence
   - Look at low agreement questions and confidence
-- Democratic evaluation of results: Classifications are votes
+- Democratic evaluation of results: Classifications are votes.
+  - Decide how to resolve ties as a group (e.g., default to `False`)
 - Share created data
 
 ### Use the training data to identify the best prompt
@@ -102,9 +105,51 @@ Each numbered notebook corresponds with one 90-minute class session. Sessions pr
 - Intuitive metric: Total percentage of agreement
 - Better metric: F-scores for binary classifications
   - Precision vs. recall
-- Iterating the prompt; outputting F-score data
+  - False positives, false negatives, etc.
+  - We might want to emphasize certain factors (e.g., recall) to avoid missing items, even if it means that we get some extra false positives
+  - For this, you can use F-beta instead. (We'll stick with F1 for simplicity.)
+- Iterating the prompt; outputting F-score data with precision and recall
   - Save scores and prompts in a data frame or similar to freely sort by scores as you tweak
 - Don't forget that tests have costs: A high-performing prompt may not be worth it if it runs on an expensive model. Classification tasks can often be accomplished on cheaper models (e.g., `gpt-3.5-turbo`)
+- Play with prompt variations on small batches of questions (10 or 20).
 - Once you have identified your best-performing prompt, it's time to run that prompt against the rest of the data, which we'll do on the final day.
 
 ## Day 3
+
+### Review Day 2
+
+- We created data to evaluate the performance of the model using a method of inter-annotator agreement on a random sample of our overall dataset, which is one year of *Jeopardy!* questions.
+- We did a binary classification task, asking the following: This question references literature: True or False, plus our subjective confidence in the answer.
+- We combined all of our individual responses, and used those to label the questions in our training data.
+- Now, we have a prompt that works well enough to use, so it's time to run against the whole data set
+
+### Dealing with limits and estimating total cost
+
+- Before doing a bigger run, you should calculate how much it will cost.
+- And you can estimate how long it will take based on rate limits.
+- If the cost is high and you can wait 24 hours for results, use the [Batch API](https://platform.openai.com/docs/guides/batch/batch-api).
+- Both have [limits](https://platform.openai.com/docs/guides/rate-limits/usage-tiers), which change based on how much you spend on the API
+- Limit factors include total number of requests per minute, tokens per minute, requests per day, and how many tokens you can have queued to be processed in batches.
+- Use `tiktoken` to count tokens in prompts, and estimate total input and output tokens.
+
+### Running classifications
+
+- Iterate through quetsions
+- Extract data from JSON
+- Count results in data frame
+- Look at random sample of positive associations
+- Bear in mind the expected error rate as compared to the testing data
+
+### Check result vs. predicted result
+
+- Based on the sample data, what percentage of questions would we expect to be about literature (~18%)?
+- What do the model run results show?
+- Sanity check some high confidence and low confidence results
+
+### What do we do with classified texts once we have them?
+
+- Use that subset of data to extract additional data on the assumption that the texts passed are already expected to be about literature.
+- Perform additional classification or labeling steps.
+- Extrude data (e.g., authors and texts from questions about literature)
+- Use the classification results as evidence.
+- Read them!
