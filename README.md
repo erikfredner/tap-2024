@@ -6,9 +6,9 @@ This repo contains the notebooks I used to teach a 2024 [Text Analysis Pedagogy 
 
 In this course, you will learn the basics of using a large language model (specifically, ChatGPT) for text classification. Using the ChatGPT application programming interface (API), we will explore how LLMs can assist humanists with various text classification tasks (e.g., binary, labeling, applying confidence intervals to judgments, etc.). We will get to know the API, create validation data, engineer model prompts, and automate API calls for large data sets.
 
-## Content
+## Course Content
 
-Each numbered notebook corresponds with one 90-minute class session. Sessions presume that participants are already familiar with Python.
+Each numbered notebook corresponds with one 90-minute class session. Sessions presume that participants are already familiar with Python and Jupyter Notebooks.
 
 ## Day 1
 
@@ -64,6 +64,47 @@ Each numbered notebook corresponds with one 90-minute class session. Sessions pr
 
 ### Review
 
+- Why classify texts?
+- Good and bad of using LLMs for classification
+- Advantages of using the API (computational traction, model parameters, etc.)
+
 ### Texts to classify
 
-- Overview of sample data: one year of *Jeopardy!* questions ([source](https://github.com/amwagner19/jarchive-clues))
+- Overview of sample data: one year of *Jeopardy!* questions somebody scraped from[J!-Archive](https://j-archive.com) and posted on GitHub ([source](https://github.com/amwagner19/jarchive-clues))
+- Difficulty of classifying these questions using non-LLM methods: Short, dense, allusive, etc.
+- Wide range of possible classification and extraction tasks possible
+- We're going to do three classifications over the next two days:
+  - Is this question about Topic A? `True` or `False`
+  - Which of the following topics is this question about? Topics: History, Science, Literature, and Other
+  - Bonus: If the question is about Topic Y, extract the following data from the question.
+- If we're going to have an LLM classify these, we have to evaluate how the model performs.
+  - To do that, we need testing data.
+
+### Evaluating classifications
+
+- An LLM hasn't failed if it isn't perfect. Human classifiers aren't perfect, either.
+- Can the LLM approximate human classification?
+  - If so, you can spend the time/money you would have spent labeling the data on correcting the LLM.
+- Inter-annotator agreement: How much do we agree on these classifications?
+- Creating human classification data as a class
+  - Each get 50 random questions from the same set of 500ish. (You may look stuff up.)
+  - Use Python user input to collect classification data and confidence intervals (e.g., "put `1` for `True` or `0` for `False`; express confidence as an integer between 50 and 100)
+  - Then include a little script that `json` dumps  their classifications to their Desktop
+  - They will receive a [Dropbox File Request](https://help.dropbox.com/share/create-file-request) email from me, where they can upload their classifications.
+  - Load results as they come in, merge, and check for inter-annotator agreement
+  - Look at high agreement questions and confidence
+  - Look at low agreement questions and confidence
+- Democratic evaluation of results: Classifications are votes
+- Share created data
+
+### Use the training data to identify the best prompt
+
+- Intuitive metric: Total percentage of agreement
+- Better metric: F-scores for binary classifications
+  - Precision vs. recall
+- Iterating the prompt; outputting F-score data
+  - Save scores and prompts in a data frame or similar to freely sort by scores as you tweak
+- Don't forget that tests have costs: A high-performing prompt may not be worth it if it runs on an expensive model. Classification tasks can often be accomplished on cheaper models (e.g., `gpt-3.5-turbo`)
+- Once you have identified your best-performing prompt, it's time to run that prompt against the rest of the data, which we'll do on the final day.
+
+## Day 3
