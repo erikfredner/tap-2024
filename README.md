@@ -26,6 +26,7 @@ The subsections below outline the content of each class:
   - Determining relative frequencies of text classes in a corpus
   - Prioritize research tasks for human labor vs. automation
 - Why are LLMs useful for text classification?
+  - Matching or exceeding human performance at lower cost
 - What are the limitations of LLMs for text classification?
 
 ### Technical introduction
@@ -39,6 +40,12 @@ The subsections below outline the content of each class:
 - [Prompt engineering](https://platform.openai.com/docs/guides/prompt-engineering/prompt-engineering) for text classification
   - Example prompts: [Tweets and Reviews](https://platform.openai.com/examples/default-tweet-classifier)
 
+### Setting up
+
+- Set up `client` and pass a test prompt
+- [Chat completion](https://platform.openai.com/docs/api-reference/chat/create) structure
+  - `role`: `system` vs. `user` vs. `assistant`
+
 ### API Costs
 
 - Distribution and explanation of class API key
@@ -47,13 +54,9 @@ The subsections below outline the content of each class:
   - Cheap models can classify well!
 - [Batch API](https://platform.openai.com/docs/guides/batch/batch-api)
 
-### Setting up
+### More advanced API features
 
-- Set up `client` and pass a test prompt
-- [Chat completion](https://platform.openai.com/docs/api-reference/chat/create) structure
-  - `role`: `system` vs. `user`
 - Discuss selected model parameters: `model`, `n`, `response_format`, `temperature`,`top_p`, `max_tokens`
-- `print` messages from dummy completion
 
 ### Play
 
