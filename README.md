@@ -80,7 +80,7 @@ The subsections below outline the content of each class:
 - Wide range of possible classification and extraction tasks possible
 - We're going to do three classifications over the next two days:
   - Is this question about Topic A? `True` or `False`
-  - Which of the following topics is this question about? Topics: History, Science, Literature, and Other
+  - Which of the following topics is this question about? Topics: `History`, Geography, Science, Literature, and Other
   - Bonus: If the question is about Topic Y, extract the following data from the question.
 - If we're going to have an LLM classify these, we have to evaluate how the model performs.
   - To do that, we need testing data.
