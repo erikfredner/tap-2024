@@ -64,13 +64,6 @@ The subsections below outline the content of each class:
 
 ## Lesson 3
 
-### Review Lesson 2
-
-- We created data to evaluate the performance of the model using a method of inter-annotator agreement on a random sample of our overall dataset, which is one year of *Jeopardy!* questions.
-- We did a binary classification task, asking the following: This question references literature: True or False, plus our subjective confidence in the answer.
-- We combined all of our individual responses, and used those to label the questions in our training data.
-- Now, we have a prompt that works well enough to use, so it's time to run against the whole data set
-
 ### Dealing with limits and estimating total cost
 
 - Before doing a bigger run, you should calculate how much it will cost.
@@ -93,11 +86,12 @@ The subsections below outline the content of each class:
 - Based on the sample data, what percentage of questions would we expect to be about literature (~18%)?
 - What do the model run results show?
 - Sanity check some high confidence and low confidence results
+- Check for correspondence between model confidence and accuracy
 
-### What do we do with classified texts once we have them?
+### What do we do with classifications once we have them?
 
-- Use that subset of data to extract additional data on the assumption that the texts passed are already expected to be about literature.
-- Perform additional classification or labeling steps.
-- Extrude data (e.g., authors and texts from questions about literature)
-- Use the classification results as evidence.
 - Read them!
+- Use the classification results as evidence
+- Use that subset of data to extract additional data
+- Perform additional classification or labeling steps (e.g., sub-classifications)
+- Extrude data (e.g., authors and texts from questions about literature)
