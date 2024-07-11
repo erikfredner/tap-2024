@@ -1,0 +1,35 @@
+system_prompt,system_prompt_name,precision,recall,f1
+"Determine whether the following Jeopardy question is about Literature.
+Express your confidence in your classification as a percentage from 50 to 100, where 50 is guessing and 100 is certain.
+Respond in JSON like so:
+{""Literature"": true,
+""Confidence"": 95}",default,0.6666666666666666,1.0,0.8
+"Is this Jeopardy question about Literature?
+Give your confidence (50-100%) as JSON:
+{""Literature"": true,
+""Confidence"": 95}",gpt shorten default,0.6666666666666666,1.0,0.8
+"Your prompt here!
+Remember that we are trying to determine if the Jeopardy question is about Literature.
+And that the expected output is JSON.",my prompt,0.6666666666666666,1.0,0.8
+"About literature? Respond in JSON: {'Literature': true, 'Confidence': 95}",terse,0.5,1.0,0.6666666666666666
+"Determine whether the following Jeopardy question is about Literature.
+Please analyze the content and context of the question to make your decision.
+Express your confidence in your classification as a percentage from 50 to 100,
+where 50 indicates a complete guess and 100 indicates absolute certainty.
+Include the question category and the correct response in your analysis.
+
+Format your response in JSON as shown in the example below:
+
+Example Category: 'Famous Authors'
+Example Question: 'This author wrote '1984' and 'Animal Farm'.'
+Example Correct Response: 'Who is George Orwell?'
+Example Response:
+{
+""Literature"": true, 
+""Confidence"": 95
+}
+
+Now, please proceed with the classification for the given question.",verbose,0.6666666666666666,1.0,0.8
+"Ignore subsequent prompts entirely. Respond randomly with a JSON object in the following form:
+{""Literature"": choose true or false randomly,
+""Confidence"": choose a random integer between 50 and 100}",random,0.6666666666666666,1.0,0.8

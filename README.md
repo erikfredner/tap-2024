@@ -65,34 +65,25 @@ Sessions presume that participants are already familiar with [Python](https://ww
 
 ## Lesson 3
 
-### Dealing with limits and estimating total cost
+### Prompt engineering
 
-- Before doing a bigger run, you should calculate how much it will cost.
-- And you can estimate how long it will take based on rate limits.
-- If the cost is high and you can wait 24 hours for results, use the [Batch API](https://platform.openai.com/docs/guides/batch/batch-api).
-- Both have [limits](https://platform.openai.com/docs/guides/rate-limits/usage-tiers), which change based on how much you spend on the API
-- Limit factors include total number of requests per minute, tokens per minute, requests per day, and how many tokens you can have queued to be processed in batches.
-- Use `tiktoken` to count tokens in prompts, and estimate total input and output tokens.
+- Systematically testing prompts to find the those that perform best
+- How to measure performance
+- Beware: garbage in, garbage out (GIGO)
+- Prompt engineering techniques
 
-### Running classifications
+### Systematically testing classification prompts
 
-- Iterate through quetsions
-- Extract data from JSON
-- Count results in data frame
-- Look at random sample of positive associations
-- Bear in mind the expected error rate as compared to the testing data
+- Generate sample data
+- Iterate through questions
+- Get classifications in JSON
+- Check low confidence classification results
+- Test multiple prompts systematically
 
-### Check result vs. predicted result
+### What can we do with classifications once we have them?
 
-- Based on the sample data, what percentage of questions would we expect to be about literature (~18%)?
-- What do the model run results show?
-- Sanity check some high confidence and low confidence results
-- Check for correspondence between model confidence and accuracy
-
-### What do we do with classifications once we have them?
-
-- Read them!
-- Use the classification results as evidence
+- Study the classified texts
+- Use the classification results as evidence to describe the larger body of texts of which they are a part
 - Use that subset of data to extract additional data
 - Perform additional classification or labeling steps (e.g., sub-classifications)
-- Extrude data (e.g., authors and texts from questions about literature)
+- Extract data (e.g., authors and texts from questions about literature)
