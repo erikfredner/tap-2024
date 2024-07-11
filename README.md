@@ -10,42 +10,41 @@ In this course, you will learn the basics of using a large language model (speci
 
 Each numbered notebook corresponds with one 90-minute class session.
 
-Sessions presume that participants are already familiar with Python and Jupyter Notebooks.
+Sessions presume that participants are already familiar with [Python](https://www.python.org), [Jupyter Notebooks](https://jupyter.org), and [`pandas`](https://pandas.pydata.org).
 
 ## Lesson 1
 
-### Why bother with text classification?
+### Why classify texts?
 
 - What is text classification?
 - Why is text classification useful?
-- Why might text classification be useful for scholarship?
 - LLMs: The good, the bad, and the ugly
 
 ### Technical introduction
 
-- Overview of LLMs generally and ChatGPT specifically
+- Overview of LLMs in general
 - Distinction between ChatGPT on the website and the API
-- Overview of APIs generally and ChatGPT's specifically
-- Overview of JSON
+- Overview of APIs generally and ChatGPT's API specifically
+- Overview of JSON and `response_format={ "type": "json_object" }`
 
 ### API Costs
 
 - How to calculate the cost of a job
 - [How to get an API key](https://help.openai.com/en/articles/7039783-how-can-i-access-the-chatgpt-api)
 - [Pricing](https://openai.com/api/pricing/) by model, input, and output
-- [Batch API](https://platform.openai.com/docs/guides/batch/batch-api)
+- [Batch API](https://platform.openai.com/docs/guides/batch/batch-api) reduces costs by **50%**
 
 ## Lesson 2
 
 ### Review Lesson 1
 
 - Why classify texts?
-- Good, bad, and ugly of using LLMs for text classification
-- Advantages of the API
+- LLMs: The good, the bad, and the ugly
+- Advantages of the API: automation, hidden options, structured output
 
 ### Texts to classify
 
-- Sample data: 500 random *Jeopardy!* questions somebody else scraped from[J!-Archive](https://j-archive.com) and posted on GitHub ([source](https://github.com/amwagner19/jarchive-clues))
+- Sample data: 500 random *Jeopardy!* questions somebody scraped from [J!-Archive](https://j-archive.com) and [posted on GitHub](https://github.com/amwagner19/jarchive-clues)
 
 ### Overview of text classification types
 
@@ -53,14 +52,16 @@ Sessions presume that participants are already familiar with Python and Jupyter 
 
 ### Evaluating LLM classifications
 
-- Can the LLM approximate human classification?
-- Inter-annotator agreement and gold-standard data
-- Creating human classification data as a class
-- Measuring Human-LLM agreement and the F-score
+- How well can the LLM approximate human classification?
+- Gold-standard data
+- [Inter-rater reliability](https://en.wikipedia.org/wiki/Inter-rater_reliability)
+- Measuring Human-LLM agreement
+- Precision, recall, and F-score
 
 ### Quantifying model uncertainty
 
-- Outputting confidence intervals
+- Outputting confidence intervals via JSON
+- Using `logprobs` to output classification token probabilities
 
 ## Lesson 3
 
